@@ -11,6 +11,8 @@ def on_open(ws):
                  "secret_key": config.SECRET_KEY}
     }
     ws.send(json.dumps(auth_data))
+    listen_message = {"action": "listen", "data": {"streams": ["AM.TSLA"]}}
+    ws.send(json.dumps(listen_message))
 
 
 def on_message(ws, message):
@@ -35,4 +37,4 @@ ws.run_forever()
 #{"action": "authenticate", "data": {"key_id": "PKLDFKW8BHZE0LGACG6N", "secret_key": "cejbieGOXWoEc/kCPkni4O12KmU32TaROYOWJVcn"}}
 
 
-# {"action": "listen", "data": {"streams": ["T.SPY", "Q.SPY", "AM.SPY"]}}
+# {"action": "listen", "data": {"streams": ["T.SPY"]}}
